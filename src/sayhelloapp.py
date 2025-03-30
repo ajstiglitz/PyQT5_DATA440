@@ -2,7 +2,7 @@
 from PyQt5 import QtWidgets as qtw
 import sys
 
-from qtcomponents import InputPopup
+from src.qtcomponents import WindowWithVerticalSlots, InputPopup
 
 # Your application will ocntain exactly one instance
 # of a QApplication object (or derived subclass)
@@ -23,14 +23,14 @@ class SayHelloApp(qtw.QApplication):
         super().__init__([])
 
         # Add the vertical hello box
-        self.main_widget = VerticalHelloBox() # type: ignore
+        self.main_widget = VerticalHelloBox()
 
         # Run the application
         self.main_widget.show()
         sys.exit(self.exec_())
         return
 
-class VerticalHelloBox(WindowWithVerticalSlots): # type: ignore
+class VerticalHelloBox(WindowWithVerticalSlots):
     '''
     Contains a text box and a button that the user can press
     which opens up another windo for them to enter
@@ -62,5 +62,5 @@ class VerticalHelloBox(WindowWithVerticalSlots): # type: ignore
         # run the dialog box and wait for the user to click the button
         if name_getter.exec_() == qtw.QDialog.accepted:
             # Set the text in the main window to whatever the user input
-            self.greeting_box.setText(f'Hello{name_getter.get_text()}')
+            self.greeting_box.setText(f'Hello{name_getter.get_text()}!')
         return None
